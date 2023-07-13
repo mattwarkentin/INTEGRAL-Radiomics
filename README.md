@@ -10,7 +10,7 @@ TBD
 
 ## Citation
 
-If you use this model, please site the following article:
+If you use this model, please cite the following article:
 
 Warkentin MT, Al-Sawaihey H, Lam S, Liu G, Diergaarde B, Wilson DO, Yuan JM, Wilson DO, Atkar-Khattra S, Grant B, Brhane Y, Khodayari-Moez E, Murison KR, Tammemägi MC, Campbell KR, Hung RJ. Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches. medRxiv. 2022:2022-10.
 
