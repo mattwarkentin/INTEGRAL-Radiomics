@@ -32,8 +32,10 @@ Note: The data should not be normalized prior to using the `predict()` function 
 Once feature extraction is complete the following code can be used to load and make predictions on your data frame (or tibble), assumed to be called `your_data`. 
 
 ```r
-# install.packages(c('tidymodels', 'glmnet', 'vetiver'))
-library(tidymodels)
+# install.packages(c('parsnip', 'recipes', 'workflows', 'glmnet', 'vetiver'))
+library(parsnip)
+library(workflows)
+library(recipes)
 library(glmnet)
 library(vetiver)
 
