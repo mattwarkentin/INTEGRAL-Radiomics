@@ -1,8 +1,8 @@
 # INTEGRAL Radiomics
 
-This repository contains the model and example code for using the radiomics model reported in:
+This repository contains the model and example code for using the radiomics pulmonary nodule malignancy model reported in:
 
-Warkentin MT, Al-Sawaihey H, Lam S, et al Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches _Thorax_ Published Online First: 09 January 2024. doi: 10.1136/thorax-2023-220226
+> Warkentin MT, Al-Sawaihey H, Lam S, et al Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches _Thorax_ Published Online First: 09 January 2024. doi: 10.1136/thorax-2023-220226
 
 ## Usage
 
