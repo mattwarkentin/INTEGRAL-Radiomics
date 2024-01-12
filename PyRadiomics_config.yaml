@@ -1,0 +1,28 @@
+imageType:
+  Original: {}
+  Wavelet: {}
+  LoG:
+    sigma: [1.0, 2.0, 3.0, 4.0, 5.0]
+  Square: {}
+  SquareRoot: {}
+  Logarithm: {}
+  Exponential: {}
+  Gradient: {}
+  LBP3D: {}
+
+featureClass:
+  firstorder: []
+  shape: []
+  glcm: []
+  glrlm: []
+  glszm: []
+  gldm: []
+  ngtdm: []
+
+setting:
+  interpolator: 'sitkLinear'
+  resampledPixelSpacing: [1, 1, 1]
+  padDistance: 10
+  binWidth: 25
+  voxelArrayShift: 1000
+  label: 1
