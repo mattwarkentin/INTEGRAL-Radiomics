@@ -1,8 +1,10 @@
 # INTEGRAL Radiomics
 
-This repository contains the model and example code for using the radiomics pulmonary nodule malignancy model reported in:
+This repository contains the model and example code for using the INTEGRAL-Radiomics screen-detected pulmonary nodule malignancy model reported in:
 
 > Warkentin MT, Al-Sawaihey H, Lam S, et al Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches _Thorax_ Published Online First: 09 January 2024. doi: 10.1136/thorax-2023-220226
+
+If you have any comments or questions, please file an [Issue](https://github.com/mattwarkentin/INTEGRAL-Radiomics/issues).
 
 ## Usage
 
@@ -32,6 +34,8 @@ Note: The data should NOT be normalized/standardized/scaled prior to using the `
 
 Once the feature extraction is complete, the following code can be used to load the model and make predictions on your data frame (or `tibble`), which is assumed to be called `your_data`. 
 
+As described in the previous section, the data frame for prediction must contain the three ID variables, eight patient variables, and the radiomics features. All other columns will be ignored. 
+
 ```r
 # install.packages(c('parsnip', 'recipes', 'workflows', 'glmnet', 'vetiver'))
 library(parsnip)
@@ -47,7 +51,7 @@ integral_rad <- readRDS('INTEGRAL-Radiomics.rds')
 predict(integral_rad, new_data = your_data, type = 'prob')
 ```
 
-The `predict(...)` function will return two columns (`.pred_0` and `.pred_1`) that correspond to the probabilties of a pulmonary nodule being benign (`0`) or malignant (`1`). Users may wish to threshold these probabilities to obtain binary class labels.
+The `predict(...)` function will return a data frame with two columns (`.pred_0` and `.pred_1`) that correspond to the probabilties of a pulmonary nodule being benign (`.pred_0`) or malignant (`.pred_1`). Users may wish to threshold these probabilities to obtain binary class labels.
 
 ## Citation
 
