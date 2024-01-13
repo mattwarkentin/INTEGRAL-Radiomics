@@ -12,7 +12,7 @@ To use this model, we assume you have performed feature extraction using the PyR
 
 We provie the YAML configuration file (`PyRadiomics_config.yaml`) in this repository so that an identical feature extraction can be performed. See the PyRadiomics website for details on performing customized feature extractions (<https://pyradiomics.readthedocs.io>).
 
-In addition to the 642 radiomics features, the following eight patient-level features are required:
+In addition to the radiomics features, the following eight patient-level features are required:
 
 - `epi_age`: Patients age (years)
 - `epi_female`: Binary variable for sex (0=Male, 1=Female)
