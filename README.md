@@ -32,7 +32,7 @@ Note: The data should NOT be normalized/standardized/scaled prior to using the `
 
 ### Model Predictions
 
-Once the feature extraction is complete, the following code can be used to load the model and make predictions on your data frame (or `tibble`), which is assumed to be called `your_data`. 
+Once the feature extraction is complete, the code presented below can be used to load the model and make predictions on your data frame (or `tibble`), which is named `your_data` in the example below. 
 
 As described in the previous section, the data frame for prediction must contain the three ID variables, nine patient variables, and the radiomics features. All other columns will be ignored. 
 
