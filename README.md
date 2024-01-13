@@ -12,7 +12,7 @@ To use this model, we assume you have performed feature extraction using the PyR
 
 We provie the YAML configuration file (`PyRadiomics_config.yaml`) in this repository so that an identical feature extraction can be performed. See the PyRadiomics website for details on performing customized feature extractions (<https://pyradiomics.readthedocs.io>).
 
-In addition to the radiomics features, the following patient-level features are required:
+In addition to the 642 radiomics features, the following eight patient-level features are required:
 
 - `epi_age`: Patients age (years)
 - `epi_female`: Binary variable for sex (0=Male, 1=Female)
@@ -21,6 +21,7 @@ In addition to the radiomics features, the following patient-level features are 
 - `epi_formersmk`: Former smoker status (0=No, 1=Yes)
 - `epi_duration` Number of years smoked cigarettes
 - `epi_cigday`: Cigarettes per day
+- `epi_quittime`: Years since quitting for former smokers (Set to 0 for current smokers)
 - `epi_bmi`: Body mass index (kg/m^2)
 
 The data frame MUST also contain identifying variables for `study` (study ID), `pid` (patient ID), and `nid` (nodule ID), though these may be set to missing (`NA`) or use random values as these data are not used in the prediction but must be in the data frame for preprocessing.
