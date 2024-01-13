@@ -14,7 +14,7 @@ To use this model, we assume you have performed feature extraction using the PyR
 
 We provie the YAML configuration file (`PyRadiomics_config.yaml`) in this repository so that an identical feature extraction can be performed. See the PyRadiomics website for details on performing customized feature extractions (<https://pyradiomics.readthedocs.io>).
 
-In addition to the radiomics features, the following eight patient-level features are required:
+In addition to the radiomics features, the following nine patient-level features are required:
 
 - `epi_age`: Patients age (years)
 - `epi_female`: Binary variable for sex (0=Male, 1=Female)
@@ -34,7 +34,7 @@ Note: The data should NOT be normalized/standardized/scaled prior to using the `
 
 Once the feature extraction is complete, the following code can be used to load the model and make predictions on your data frame (or `tibble`), which is assumed to be called `your_data`. 
 
-As described in the previous section, the data frame for prediction must contain the three ID variables, eight patient variables, and the radiomics features. All other columns will be ignored. 
+As described in the previous section, the data frame for prediction must contain the three ID variables, nine patient variables, and the radiomics features. All other columns will be ignored. 
 
 ```r
 # install.packages(c('parsnip', 'recipes', 'workflows', 'glmnet', 'vetiver'))
