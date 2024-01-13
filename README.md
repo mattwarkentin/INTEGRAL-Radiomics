@@ -43,7 +43,7 @@ library(vetiver)
 # Load the INTEGRAL-Radiomics model
 integral_rad <- readRDS('INTEGRAL-Radiomics.rds')
 
-# Precict probabilities for `your_data`
+# Predict probabilities for `your_data`
 predict(integral_rad, new_data = your_data, type = 'prob')
 ```
 
