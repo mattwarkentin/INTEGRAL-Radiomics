@@ -1,4 +1,8 @@
 #!/usr/bin/env Rapp
+#| launcher:
+#|   name: integral-radiomics
+#|   vanilla: true
+
 #| description: Predict nodule malignancy risk using the INTEGRAL-Radiomics model (https://thorax.bmj.com/content/early/2024/01/08/thorax-2023-220226).
 
 #| description: Path to image.

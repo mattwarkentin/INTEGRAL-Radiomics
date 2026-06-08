@@ -12,82 +12,55 @@ If you have any comments or questions, please file an [Issue](https://github.com
 
 As of May 2026, we have added a command-line interface to simplify getting predictions using the INTEGRAL-Radiomics model.
 
-First, clone the GitHub repository:
+Within a project directory, create a Python virtual environment and install the required dependencies for PyRadiomics. Use the requirements.txt file found [here](https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt). 
+
+For example, in the shell:
 
 ```sh
-git clone https://github.com/mattwarkentin/INTEGRAL-Radiomics.git
+wget https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt
+python3.11 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-Next, create a Python virtual environment and install the required dependencies for PyRadiomics. For example:
+Next, we install `Rapp` to use the CLI:
 
 ```sh
-python3 -m venv venv
-pip install pyradiomics==3.0.1
-pip install scipy trimesh
+# Install `Rapp`
+Rscript -e "install.packages('Rapp')"
+
+# Add `Rapp` to PATH
+Rscript -e "Rapp::install_pkg_cli_apps('Rapp')"
 ```
 
-Next, install the necessary R dependencies using `renv`:
-
-```sh
-Rscript -e "renv::restore()"
-```
-
-Next, we install Rapp to use the CLI:
-
-```sh
-# Install Rapp
-Rscript -e "install.packages("Rapp")"
-
-# Add `Rapp` to your PATH
-Rscript -e "Rapp::install_pkg_cli_apps("Rapp")"
-```
-
-Finally, we can use the INTEGRAL-Radiomics model:
-
-### Setup
-
-To use this model, we assume you have performed feature extraction using the PyRadiomics Python library (<https://pyradiomics.readthedocs.io>). Note, that this study used PyRadiomics V.3.0.1. More information about the feature extraction can be found in the published manuscript cited below.
-
-We provie the YAML configuration file (`PyRadiomics_config.yaml`) in this repository so that an identical feature extraction can be performed. See the PyRadiomics website for details on performing customized feature extractions (<https://pyradiomics.readthedocs.io>).
-
-In addition to the radiomics features, the following nine patient-level features are required:
-
-- `epi_age`: Patients age (years)
-- `epi_female`: Binary variable for sex (0=Male, 1=Female)
-- `epi_fhlc`: Binary variable for family history of lung cancer (0=No, 1=Yes)
-- `epi_copdemph`: Binary variable for history of COPD or emphysema (0=No, 1=Yes)
-- `epi_formersmk`: Former smoker status (0=No, 1=Yes)
-- `epi_duration` Number of years smoked cigarettes
-- `epi_cigday`: Cigarettes per day
-- `epi_quittime`: Years since quitting for former smokers (Set to 0 for current smokers)
-- `epi_bmi`: Body mass index (kg/m^2)
-
-The data frame MUST also contain identifying variables for `study` (study ID), `pid` (patient ID), and `nid` (nodule ID), though these may be set to missing (`NA`) or use random values as these data are not used in the prediction but must be in the data frame for preprocessing.
-
-Note: The data should NOT be normalized/standardized/scaled prior to using the `predict()` function described below. Normalization of predictors happens automatically during the call to `predict()`.
-
-### Model Predictions
-
-Once the feature extraction is complete, the code presented below can be used to load the model and make predictions on your data frame (or `tibble`), which is named `your_data` in the example below. 
-
-As described in the previous section, the data frame for prediction must contain the three ID variables, nine patient variables, and the radiomics features. All other columns will be ignored. 
+Next, we install the `integralrad` R package from GitHub:
 
 ```r
-# install.packages(c('parsnip', 'recipes', 'workflows', 'glmnet', 'vetiver'))
-library(parsnip)
-library(recipes)
-library(workflows)
-library(glmnet)
-library(vetiver)
+# Install `integralrad`
+Rscript -e "pak::pak('mattwarkentin/INTEGRAL-Radiomics')"
 
-# Load the INTEGRAL-Radiomics model
-integral_rad <- readRDS('INTEGRAL-Radiomics.rds')
-
-# Predict probabilities for `your_data`
-predict(integral_rad, new_data = your_data, type = 'prob')
+# Add `integral-radiomics` CLI to PATH
+Rscript -e "integralrad::install_integralrad_cli()"
 ```
 
-The `predict(...)` function will return a data frame with two columns (`.pred_0` and `.pred_1`) that correspond to the probabilties of a pulmonary nodule being benign (`.pred_0`) or malignant (`.pred_1`). Users may wish to threshold these probabilities to obtain binary class labels.
+Finally, we can use the INTEGRAL-Radiomics CLI:
+
+```sh
+integral-radiomics \
+  --image=<path-to-image> \
+  --mask=<path-to-mask> \
+  --age=65 \
+  --sex=0 \
+  --fhlc=1 \
+  --copdemph=1 \
+  --formersmk=0 \
+  --duration=30 \
+  --cigday=20 \
+  --quittime=0 \
+  --bmi=25 \
+  --out=<output-csv>
+
+```
 
 ## Citation
 
