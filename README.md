@@ -8,6 +8,42 @@ If you have any comments or questions, please file an [Issue](https://github.com
 
 ## Usage
 
+### Command-Line Interface
+
+As of May 2026, we have added a command-line interface to simplify getting predictions using the INTEGRAL-Radiomics model.
+
+First, clone the GitHub repository:
+
+```sh
+git clone https://github.com/mattwarkentin/INTEGRAL-Radiomics.git
+```
+
+Next, create a Python virtual environment and install the required dependencies for PyRadiomics. For example:
+
+```sh
+python3 -m venv venv
+pip install pyradiomics==3.0.1
+pip install scipy trimesh
+```
+
+Next, install the necessary R dependencies using `renv`:
+
+```sh
+Rscript -e "renv::restore()"
+```
+
+Next, we install Rapp to use the CLI:
+
+```sh
+# Install Rapp
+Rscript -e "install.packages("Rapp")"
+
+# Add `Rapp` to your PATH
+Rscript -e "Rapp::install_pkg_cli_apps("Rapp")"
+```
+
+Finally, we can use the INTEGRAL-Radiomics model:
+
 ### Setup
 
 To use this model, we assume you have performed feature extraction using the PyRadiomics Python library (<https://pyradiomics.readthedocs.io>). Note, that this study used PyRadiomics V.3.0.1. More information about the feature extraction can be found in the published manuscript cited below.

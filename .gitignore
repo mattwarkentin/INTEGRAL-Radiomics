@@ -4,3 +4,7 @@
 .Ruserdata
 .DS_Store
 .httr-oauth
+.venv/
+examples/
+feats.csv
+log.txt
