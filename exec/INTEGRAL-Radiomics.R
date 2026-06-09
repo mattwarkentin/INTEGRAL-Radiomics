@@ -1,9 +1,14 @@
 #!/usr/bin/env Rapp
+#| description: Predict nodule malignancy risk using the INTEGRAL-Radiomics model (https://thorax.bmj.com/content/early/2024/01/08/thorax-2023-220226).
 #| launcher:
 #|   name: integral-radiomics
 #|   vanilla: true
 
-#| description: Predict nodule malignancy risk using the INTEGRAL-Radiomics model (https://thorax.bmj.com/content/early/2024/01/08/thorax-2023-220226).
+library(vetiver)
+library(glmnet)
+library(parsnip)
+library(workflows)
+library(recipes)
 
 #| description: Path to image.
 #| val_type: string
@@ -124,6 +129,7 @@ epi_df <- data.frame(
 
 ## 1. PyRadiomics feature extraction
 temp_csv <- tempfile(fileext = ".csv")
+config_file <- system.file("PyRadiomics_config.yaml", package = "integralrad")
 
 sys::exec_wait(
   cmd = "pyradiomics",
@@ -131,9 +137,7 @@ sys::exec_wait(
     check_file_exist(image),
     check_file_exist(mask),
     glue::glue("--out={temp_csv}"),
-    glue::glue(
-      '--param={system.file("PyRadiomics_config.yaml", "integralrad")}'
-    ),
+    glue::glue("--param={config_file}"),
     "--format=csv"
   )
 )
@@ -148,6 +152,10 @@ clean_eng_feats <-
 combined_df <- dplyr::bind_cols(epi_df, clean_eng_feats)
 
 ## 3. Make predictions
-integral_rad <- readRDS("INTEGRAL-Radiomics.rds")
-pred <- predict(integral_rad, new_data = combined_df, type = "prob")
-readr::write_csv(pred, out)
+integral_rad <- readRDS(system.file(
+  "INTEGRAL-Radiomics.rds",
+  package = "integralrad"
+))
+pred <- stats::predict(integral_rad, new_data = combined_df, type = "prob")
+df_out <- dplyr::bind_cols(image = image, mask = mask, epi_df[, 4:12], pred)
+readr::write_csv(df_out, out)
