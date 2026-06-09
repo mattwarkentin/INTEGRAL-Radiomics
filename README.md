@@ -22,20 +22,11 @@ source venv/bin/activate
 pip install -r https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt
 ```
 
-Next, we install `Rapp` to use the CLI:
-
-```sh
-# Install `Rapp`
-Rscript -e "install.packages('Rapp')"
-
-# Add `Rapp` to PATH
-Rscript -e "Rapp::install_pkg_cli_apps('Rapp')"
-```
-
 Next, we install the `integralrad` R package from GitHub:
 
-```r
-# Install `integralrad`
+```sh
+# Install `pak` and `integralrad`
+Rscript -e "install.packages('pak')"
 Rscript -e "pak::pak('mattwarkentin/INTEGRAL-Radiomics')"
 
 # Add `integral-radiomics` CLI to PATH
