@@ -17,10 +17,9 @@ Within a project directory, create a Python virtual environment and install the 
 For example, in the shell:
 
 ```sh
-wget https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt
 python3.11 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt
 ```
 
 Next, we install `Rapp` to use the CLI:
