@@ -60,11 +60,12 @@ integral-radiomics \
   --duration=30 \
   --cigday=20 \
   --quittime=0 \
-  --bmi=25 \
-  --out=<output-csv>
+  --bmi=25
 ```
 
-See `integreal-radiomics --help` for more information. 
+You can use the `--out` and/or `--feats` CLI arguments to output the predictions or PyRadiomics features to CSV on disk.
+
+See `integral-radiomics --help` for more information. 
 
 ## Citation
 
