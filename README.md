@@ -62,8 +62,9 @@ integral-radiomics \
   --quittime=0 \
   --bmi=25 \
   --out=<output-csv>
-
 ```
+
+See `integreal-radiomics --help` for more information. 
 
 ## Citation
 
