@@ -46,6 +46,10 @@ Rscript -e "integralrad::install_integralrad_cli()"
 Finally, we can use the INTEGRAL-Radiomics CLI:
 
 ```sh
+source venv/bin/activate
+```
+
+```sh
 integral-radiomics \
   --image=<path-to-image> \
   --mask=<path-to-mask> \
