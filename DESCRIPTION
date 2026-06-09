@@ -25,5 +25,7 @@ Imports:
     Rapp,
     readr,
     stringr
+Remotes:
+    r-lib/Rapp
 URL: https://github.com/mattwarkentin/INTEGRAL-Radiomics
 BugReports: https://github.com/mattwarkentin/INTEGRAL-Radiomics/issues
