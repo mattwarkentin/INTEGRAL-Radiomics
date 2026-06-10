@@ -4,14 +4,16 @@
 #|   name: integral-radiomics
 #|   vanilla: true
 
-#| description: Input CSV.
+#| description: Path to input CSV.
 #| val_type: string
 #| required: true
+#| negative_alias: false
 input <- NA
 
-#| description: Output CSV
+#| description: Path to save output CSV.
 #| val_type: string
 #| required: true
+#| negative_alias: false
 output <- NA
 
 df_pred <- integralrad::predict_integral_radiomics(input)
