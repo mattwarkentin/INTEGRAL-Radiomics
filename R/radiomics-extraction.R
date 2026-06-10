@@ -1,0 +1,14 @@
+#' PyRadiomics Feature Extraction
+#'
+#' @param image File path to input image.
+#' @param mask File path to nodule mask.
+#'
+#' @export
+extract_radiomics <- function(image, mask) {
+  params <- system.file("PyRadiomics_config.yaml", package = "integralrad")
+  extractor <- radiomics$featureextractor$RadiomicsFeatureExtractor(params)
+  result <- extractor$execute(image, mask)
+  names_to_remove <- stringr::str_detect(names(result), "^diagnostics_")
+  results_tbl <- dplyr::as_tibble(result[!names_to_remove])
+  results_tbl
+}

@@ -13,6 +13,7 @@ RoxygenNote: 7.3.3.9000
 Depends:
     R (>= 4.1.0)
 Imports: 
+    dplyr,
     glue,
     fs,
     rlang,
@@ -21,10 +22,11 @@ Imports:
     recipes,
     vetiver,
     glmnet,
-    sys,
     Rapp,
     readr,
-    stringr
+    stringr,
+    reticulate,
+    purrr
 Remotes:
     r-lib/Rapp
 URL: https://github.com/mattwarkentin/INTEGRAL-Radiomics
