@@ -1,6 +1,6 @@
 # INTEGRAL Radiomics
 
-This repository contains the model and example code for using the INTEGRAL-Radiomics screen-detected pulmonary nodule malignancy model reported in:
+This repository contains the model and code for using the **INTEGRAL-Radiomics** screen-detected pulmonary nodule malignancy model reported in:
 
 > Warkentin MT, Al-Sawaihey H, Lam S, et al Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches _Thorax_ Published Online First: 09 January 2024. doi: 10.1136/thorax-2023-220226
 
@@ -8,55 +8,39 @@ If you have any comments or questions, please file an [Issue](https://github.com
 
 ## Usage
 
+To use the INTEGRAL-Radiomics model, you simply need to install the R package `integralrad` and it handles all the necessary R and Python dependencies to perform the PyRadiomics feature extraction and model predictions.
+
+```r
+# Install `integralrad`
+pak::pak("mattwarkentin")
+```
+
+Once installed, we can use `extract_radiomics(...)` to perform only the feature extraction, or `predict_integral_radiomics(...)` to execute the entire prediction pipeline. 
+
+```r
+library(integralrad)
+
+# Path to CSV with required columns (see `?predict_integral_radiomics` for details)
+input <- "path/to/csv"
+
+preds <- predict_integral_radiomics(input)
+```
+
 ### Command-Line Interface
 
-As of May 2026, we have added a command-line interface to simplify getting predictions using the INTEGRAL-Radiomics model.
+We have also included a command-line interface to simplify getting predictions using the INTEGRAL-Radiomics model. For input, simply pass in a path to a CSV file (`--input`) that contains the relevant columns described in `?predict_integral_radiomics()`. You must also provide the path to where the output CSV should be saved on disk (`--output`).
 
-Within a project directory, create a Python virtual environment and install the required dependencies for PyRadiomics. Use the requirements.txt file found [here](https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt). 
+After installing the package (as described above), you simply need to install the `integral-radiomics` CLI by running the following R code:
 
-For example, in the shell:
-
-```sh
-python3.11 -m venv venv
-source venv/bin/activate
-pip install -r https://raw.githubusercontent.com/mattwarkentin/INTEGRAL-Radiomics/refs/heads/main/inst/requirements.txt
+```r
+integralrad::install_integralrad_cli()
 ```
 
-Next, we install the `integralrad` R package from GitHub:
+After restarting your shell, you should be able to run the following:
 
 ```sh
-# Install `pak` and `integralrad`
-Rscript -e "install.packages('pak')"
-Rscript -e "pak::pak('mattwarkentin/INTEGRAL-Radiomics')"
-
-# Add `integral-radiomics` CLI to PATH
-Rscript -e "integralrad::install_integralrad_cli()"
+integral-radiomics --input=<path-to-input> --output=<path-to-output>
 ```
-
-Finally, we can use the INTEGRAL-Radiomics CLI:
-
-```sh
-source venv/bin/activate
-```
-
-```sh
-integral-radiomics \
-  --image=<path-to-image> \
-  --mask=<path-to-mask> \
-  --age=65 \
-  --sex=0 \
-  --fhlc=1 \
-  --copdemph=1 \
-  --formersmk=0 \
-  --duration=30 \
-  --cigday=20 \
-  --quittime=0 \
-  --bmi=25
-```
-
-You can use the `--out` and/or `--feats` CLI arguments to output the predictions or PyRadiomics features to CSV on disk.
-
-See `integral-radiomics --help` for more information. 
 
 ## Citation
 
