@@ -17,7 +17,7 @@ To use the INTEGRAL-Radiomics model, you simply need to install the R package `i
 
 ```r
 # Install `integralrad`
-pak::pak("mattwarkentin/integralrad")
+remotes::install_github("mattwarkentin/INTEGRAL-Radiomics")
 ```
 
 Once installed, we can use `extract_radiomics(...)` to perform only the feature extraction, or `predict_integral_radiomics(...)` to execute the entire prediction pipeline. 
