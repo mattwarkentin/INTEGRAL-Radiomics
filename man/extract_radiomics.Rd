@@ -4,14 +4,12 @@
 \alias{extract_radiomics}
 \title{PyRadiomics Feature Extraction}
 \usage{
-extract_radiomics(image, mask, quiet = FALSE)
+extract_radiomics(image, mask)
 }
 \arguments{
 \item{image}{File path to input image.}
 
 \item{mask}{File path to nodule mask.}
-
-\item{quiet}{Logical. Set to \code{TRUE} to suppress messages. Default is \code{FALSE}.}
 }
 \description{
 PyRadiomics Feature Extraction

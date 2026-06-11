@@ -2,10 +2,9 @@
 #'
 #' @param image File path to input image.
 #' @param mask File path to nodule mask.
-#' @param quiet Logical. Set to `TRUE` to suppress messages. Default is `FALSE`.
 #'
 #' @export
-extract_radiomics <- function(image, mask, quiet = FALSE) {
+extract_radiomics <- function(image, mask) {
   params <- system.file("PyRadiomics_config.yaml", package = "integralrad")
   extractor <- radiomics$featureextractor$RadiomicsFeatureExtractor(params)
 
