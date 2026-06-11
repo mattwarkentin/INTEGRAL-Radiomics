@@ -1,11 +1,15 @@
 Package: integralrad
 Title: Pulmonary Nodule Malignancy Prediction using INTEGRAL-Radiomics
-Version: 0.1.0
+Version: 0.0.0.9000
 Authors@R: 
     person("Matthew T.", "Warkentin", , "matthew.warkentin@ucalgary.ca", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8730-3511"))
-Description: R Package for using the INTEGRAL-Radiomics screen-detected pulmonary nodule malignancy model 
-    as reported Thorax.
+Description: An implementation of the INTEGRAL-Radiomics pulmonary nodule malignancy prediction model.
+    The package enables standardized preprocessing, radiomic feature extraction, and malignancy risk
+    prediction for pulmonary nodules detected on computed tomography (CT) imaging. It is designed to
+    support reproducible research for radiomics-based lung cancer risk assessment workflows. The 
+    INTEGRAL-Radiomics model was originally described in https://doi.org/10.1136/thorax-2023-220226
+    (PMID: 38195644).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -16,18 +20,16 @@ Imports:
     dplyr,
     glue,
     fs,
-    rlang,
-    parsnip,
-    workflows,
-    recipes,
-    vetiver,
     glmnet,
+    parsnip,
+    purrr,
     Rapp,
     readr,
-    stringr,
+    recipes,
     reticulate,
-    purrr
-Remotes:
-    r-lib/Rapp
+    rlang,
+    stringr,
+    vetiver,
+    workflows
 URL: https://github.com/mattwarkentin/INTEGRAL-Radiomics
 BugReports: https://github.com/mattwarkentin/INTEGRAL-Radiomics/issues

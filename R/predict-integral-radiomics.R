@@ -1,16 +1,18 @@
-#' INTEGRAL-Radiomics Nodule Malignancy Predictions
+#' INTEGRAL-Radiomics Nodule Malignancy Prediction
 #'
 #' @description
-#' Predict the probability of nodule malignancy using the INTEGRAL-Radiomics
-#'   model. The model uses the Python library `PyRadiomics` to perform feature
-#'   extraction before making model predictions.
+#' Predict the probability of malignancy for a pulmonary nodule using the
+#'   **INTEGRAL-Radiomics** model. This function uses the Python library
+#'   [`PyRadiomics`](https://pyradiomics.readthedocs.io/en/latest/) to perform
+#'   feature extraction before making model predictions.
 #'
-#' @param input Path to a CSV. See Details.
-#' @param quiet Logical. Set to `TRUE` to suppress messages. Default is `FALSE`.
+#' @param input Path to a CSV. See Details for more information on the format.
+#' @param quiet Logical. Set to `TRUE` to suppress messages and progress bars.
+#'   Default is `FALSE`.
 #'
 #' @details
-#' The input for this function should be a path to aCSV with the following
-#'   columns (names must be exact matches):
+#' The `input` for this function should be a path to a CSV with the following
+#'   columns (column names must be exact matches):
 #'   - `image`: Path to image (NRRD format)
 #'   - `mask`: Path to nodule mask (NRRD format)
 #'   - `age`: Age (years)
@@ -24,10 +26,16 @@
 #'   - `quittime`: Years since quitting for former smokers (set to 0 for current
 #'     smokers)
 #'
-#' @return A `tibble::tibble` with the input columsn and one column added for
-#'   the probability of nodule malignancy (i.e., lung cancer).
+#' @return A [`tibble::tibble`] with the `input` columns and two columns added
+#'   for the probability of nodule malignancy (`pred_malignant`) and the
+#'   complementary probability of being a benign nodule (`pred_benign`).
 #'
 #' @import glmnet parsnip recipes workflows vetiver readr
+#'
+#' @examples
+#' \dontrun{
+#' predict_integral_radiomics("input.csv")
+#' }
 #'
 #' @export
 predict_integral_radiomics <- function(input, quiet = FALSE) {
