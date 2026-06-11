@@ -1,5 +1,9 @@
 # INTEGRAL Radiomics
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 This repository contains the model and code for using the **INTEGRAL-Radiomics** screen-detected pulmonary nodule malignancy model reported in:
 
 > Warkentin MT, Al-Sawaihey H, Lam S, et al Radiomics analysis to predict pulmonary nodule malignancy using machine learning approaches _Thorax_ Published Online First: 09 January 2024. doi: 10.1136/thorax-2023-220226
