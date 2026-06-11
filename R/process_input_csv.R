@@ -1,5 +1,5 @@
-process_input_csv <- function(input) {
-  df <- readr::read_csv(input)
+process_input_csv <- function(input, quiet) {
+  df <- readr::read_csv(input, show_col_types = !quiet, progress = !quiet)
 
   image <- check_files_exist(df$image, "`image`")
   mask <- check_files_exist(df$mask, "`mask`")

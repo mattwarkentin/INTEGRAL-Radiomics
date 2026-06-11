@@ -4,10 +4,12 @@
 \alias{predict_integral_radiomics}
 \title{INTEGRAL-Radiomics Nodule Malignancy Predictions}
 \usage{
-predict_integral_radiomics(input)
+predict_integral_radiomics(input, quiet = FALSE)
 }
 \arguments{
 \item{input}{Path to a CSV. See Details.}
+
+\item{quiet}{Logical. Set to \code{TRUE} to suppress messages. Default is \code{FALSE}.}
 }
 \value{
 A \code{tibble::tibble} with the input columsn and one column added for

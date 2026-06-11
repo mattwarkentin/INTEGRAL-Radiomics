@@ -1,4 +1,5 @@
 radiomics <- NULL
+logging <- NULL
 
 .onLoad <- function(libname, pkgname) {
   Sys.setenv(RETICULATE_PYTHON = "managed")
@@ -9,6 +10,6 @@ radiomics <- NULL
       "trimesh==3.23.5"
     )
   )
-
+  logging <<- reticulate::import("logging", delay_load = TRUE)
   radiomics <<- reticulate::import("radiomics", delay_load = TRUE)
 }

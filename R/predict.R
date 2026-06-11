@@ -6,6 +6,7 @@
 #'   extraction before making model predictions.
 #'
 #' @param input Path to a CSV. See Details.
+#' @param quiet Logical. Set to `TRUE` to suppress messages. Default is `FALSE`.
 #'
 #' @details
 #' The input for this function should be a path to aCSV with the following
@@ -29,11 +30,11 @@
 #' @import glmnet parsnip recipes workflows vetiver readr
 #'
 #' @export
-predict_integral_radiomics <- function(input) {
-  df <- process_input_csv(input)
+predict_integral_radiomics <- function(input, quiet = FALSE) {
+  df <- process_input_csv(input, quiet)
 
   feats <-
-    purrr::map2(df$image, df$mask, extract_radiomics) |>
+    purrr::map2(df$image, df$mask, extract_radiomics, .progress = !quiet) |>
     purrr::list_rbind()
 
   pred_df <- dplyr::bind_cols(df, feats)
@@ -46,7 +47,12 @@ predict_integral_radiomics <- function(input) {
   pred <- stats::predict(model, new_data = pred_df, type = "prob")
 
   dplyr::bind_cols(df, pred) |>
-    dplyr::select(-c(study, pid, nid))
+    dplyr::select(-c(study, pid, nid)) |>
+    dplyr::rename_with(\(x) stringr::str_remove(x, "^epi_")) |>
+    dplyr::rename(
+      pred_benign = .pred_0,
+      pred_malignant = .pred_1
+    )
 }
 
-utils::globalVariables(c("study", "pid", "nid"))
+utils::globalVariables(c("study", "pid", "nid", ".pred_0", ".pred_1"))

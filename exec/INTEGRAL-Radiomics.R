@@ -16,6 +16,10 @@ input <- NA
 #| negative_alias: false
 output <- NA
 
-df_pred <- integralrad::predict_integral_radiomics(input)
+#| description: Suppress messages.
+#| negative_alias: false
+quiet <- FALSE
+
+df_pred <- integralrad::predict_integral_radiomics(input, quiet)
 
 readr::write_csv(df_pred, output)
