@@ -1,6 +1,6 @@
 Package: integralrad
 Title: Pulmonary Nodule Malignancy Prediction using INTEGRAL-Radiomics
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Matthew T.", "Warkentin", , "matthew.warkentin@ucalgary.ca", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8730-3511"))
