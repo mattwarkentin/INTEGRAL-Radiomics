@@ -15,6 +15,8 @@
 #'
 #' @md
 #'
+#' @return A [`tibble::tibble`] with the `PyRadiomics` features.
+#'
 #' @examples
 #' \dontrun{
 #' extract_radiomics("image.nrrd", "mask.nrrd")

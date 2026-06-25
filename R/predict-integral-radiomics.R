@@ -32,11 +32,6 @@
 #'
 #' @import glmnet parsnip recipes workflows vetiver readr
 #'
-#' @examples
-#' \dontrun{
-#' predict_integral_radiomics("input.csv")
-#' }
-#'
 #' @export
 predict_integral_radiomics <- function(input, quiet = FALSE) {
   df <- process_input_csv(input, quiet)

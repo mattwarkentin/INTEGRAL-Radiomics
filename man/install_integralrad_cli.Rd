@@ -16,6 +16,9 @@ overwrites, \code{FALSE} never overwrites non-Rapp executables, and \code{NA} (t
 default) prompts interactively and otherwise skips.}
   }}
 }
+\value{
+Nothing, called for its side effects.
+}
 \description{
 Install \code{integralrad} cli applications.
 }

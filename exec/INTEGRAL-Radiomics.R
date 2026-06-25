@@ -1,12 +1,12 @@
 #!/usr/bin/env Rapp
 #| description: >
-#|     An implementation of the INTEGRAL-Radiomics pulmonary nodule malignancy
-#|     prediction model. The package enables standardized preprocessing,
-#|     radiomic feature extraction, and malignancy risk prediction for pulmonary
-#|     nodules detected on computed tomography (CT) imaging. It is designed to
-#|     support reproducible research for radiomics-based lung cancer risk
-#|     assessment workflows. The INTEGRAL-Radiomics model was originally
-#|     described in https://doi.org/10.1136/thorax-2023-220226 (PMID: 38195644).
+#|  An implementation of the INTEGRAL-Radiomics pulmonary nodule
+#|  malignancy prediction model. The package enables standardized preprocessing,
+#|  radiomics feature extraction, and malignancy risk prediction for pulmonary
+#|  nodules detected on computed tomography (CT) imaging. It is designed to
+#|  support reproducible research for radiomics-based lung cancer risk
+#|  assessment workflows. The INTEGRAL-Radiomics model is described in Warkentin
+#|  et al. (2024) <doi:10.1136/thorax-2023-220226> (PMID: 38195644).
 #| launcher:
 #|   name: integral-radiomics
 

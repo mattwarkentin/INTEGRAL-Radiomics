@@ -41,9 +41,3 @@ columns (column names must be exact matches):
 smokers)
 }
 }
-\examples{
-\dontrun{
-predict_integral_radiomics("input.csv")
-}
-
-}

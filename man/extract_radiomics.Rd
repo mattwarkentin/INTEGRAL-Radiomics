@@ -11,6 +11,9 @@ extract_radiomics(image, mask)
 
 \item{mask}{File path to nodule mask (NRRD format).}
 }
+\value{
+A \code{\link[tibble:tibble]{tibble::tibble}} with the \code{PyRadiomics} features.
+}
 \description{
 This function performs the radiomics feature extraction using the
 \href{https://pyradiomics.readthedocs.io/en/latest/}{\code{PyRadiomics}} Python

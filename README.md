@@ -1,8 +1,8 @@
 # INTEGRAL-Radiomics
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/integralrad)](https://CRAN.R-project.org/package=integralrad)
 [![R-CMD-check](https://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mattwarkentin/INTEGRAL-Radiomics/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 This repository contains the model and code for using the **INTEGRAL-Radiomics** screen-detected pulmonary nodule malignancy model published in:
